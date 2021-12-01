@@ -7,5 +7,8 @@ A collection of useful `kubectl` commands.
 [...]  
 `kubectl delete pod psql --namespace=<mynamespace>`  
 
-## Delete all jobs from a namespace
+## Delete all Jobs from a Namespace
 `kubectl delete jobs --namespace=<mynamespace> $(kubectl get jobs --namespace=<mynamespace> -o custom-columns=:.metadata.name)`
+
+## Delete all completed Pods from a Namespace
+`kubectl delete pods --namespace <namespace> --field-selector=status.phase==Succeeded`
