@@ -14,4 +14,4 @@ A collection of useful `kubectl` commands.
 `kubectl delete pods --namespace <namespace> --field-selector=status.phase==Succeeded`
 
 ## Delete old replica sets
-`kubectl -n namespace delete $(kubectl get all | grep replicaset.apps | grep "0         0         0" | cut -d' ' -f 1)`
+`kubectl --namespace <namespace> delete $(kubectl --namespace <namespace> get all | grep replicaset.apps | grep "0         0         0" | cut -d' ' -f 1)`
