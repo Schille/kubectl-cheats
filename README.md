@@ -12,3 +12,6 @@ A collection of useful `kubectl` commands.
 
 ## Delete all completed Pods from a Namespace
 `kubectl delete pods --namespace <namespace> --field-selector=status.phase==Succeeded`
+
+## Delete old replica sets
+`kubectl --namespace <namespace> delete $(kubectl --namespace <namespace> get all | grep replicaset.apps | grep "0         0         0" | cut -d' ' -f 1)`
