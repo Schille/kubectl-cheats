@@ -15,3 +15,7 @@ A collection of useful `kubectl` commands.
 
 ## Delete old replica sets
 `kubectl --namespace <namespace> delete $(kubectl --namespace <namespace> get all | grep replicaset.apps | grep "0         0         0" | cut -d' ' -f 1)`
+
+## Delete CRDs in case of missing finalizers
+`kubectl patch crd/<CRD> -p '{"metadata":{"finalizers":[]}}' --type=merge`
+and then delete all objects.
